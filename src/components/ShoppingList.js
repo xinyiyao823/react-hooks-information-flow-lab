@@ -6,7 +6,7 @@ import Item from "./Item"
 function ShoppingList({ items }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  function onChangeCategory() {
+  
     const itemsToDisplay = items.filter((item) => {
       if (selectedCategory === "All") {
         return true;
@@ -14,21 +14,20 @@ function ShoppingList({ items }) {
         return item.category === selectedCategory;
       }
   })   
-  }
-  
+ 
   return (
     <div className="ShoppingList">
       <div className="Filter">
-          <Filter changeCategory={onChangeCategory}/>
+          <Filter onCategoryChange={setSelectedCategory}/>
       </div>
       <ul className="Items">
-        {/* {itemsToDisplay.map((item) => (
+        {itemsToDisplay.map((item) => (
           <Item 
           key={item.id} 
           name={item.name} 
           category={item.category} 
           />
-        ))} */}
+        ))}
       </ul>
     </div>
   );
